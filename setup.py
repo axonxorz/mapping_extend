@@ -19,7 +19,7 @@ setup(
     description='Collection and list extender',
     long_description=long_description,
     url='',
-    install_requires=[],
+    install_requires=['six'],
     setup_requires=[],
     tests_require=[],
     license='MIT',

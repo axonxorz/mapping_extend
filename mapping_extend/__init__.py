@@ -1,4 +1,5 @@
 import collections
+from six import iteritems
 
 
 def mapping_extend(original, *updates):
@@ -8,7 +9,7 @@ def mapping_extend(original, *updates):
     in `updates`. Sequence objects will be extended"""
 
     for update in updates:
-        for k, v in update.iteritems():
+        for k, v in iteritems(update):
             if isinstance(v, collections.Mapping):
                 r = mapping_extend(original.get(k, {}), v)
                 original[k] = r

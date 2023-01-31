@@ -1,4 +1,9 @@
-import collections
+import sys
+if sys.version_info.major >= 3 and sys.version_info.minor >= 3:
+    from collections.abc import Mapping, Sequence
+else:
+    from collections import Mapping, Sequence
+
 from six import iteritems
 
 
@@ -10,10 +15,10 @@ def mapping_extend(original, *updates):
 
     for update in updates:
         for k, v in iteritems(update):
-            if isinstance(v, collections.Mapping):
+            if isinstance(v, Mapping):
                 r = mapping_extend(original.get(k, {}), v)
                 original[k] = r
-            elif isinstance(v, collections.Sequence):
+            elif isinstance(v, Sequence):
                 if k not in original:
                     original[k] = []
                 original[k].extend(v)
